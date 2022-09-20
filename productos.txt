@@ -1,0 +1,1 @@
+[{"name":"Drácula","price":700.7,"thumbnail":"https://dracula.com","id":1},{"name":"Frankestein","price":915.65,"thumbnail":"https://frankestein.com","id":2},{"name":"Farenheit 451","price":645,"thumbnail":"https://farenheit451.com","id":3},{"name":"Aleph","price":602,"thumbnail":"https://Aleph.com","id":4}]
