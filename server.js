@@ -4,16 +4,16 @@ const fs = require('fs');
 const random = require('random');
 
 class Contenedor{
-    constructor(file){
-        this.file = file;
+    constructor(archivo){
+        this.archivo = archivo;
     }
     async save(producto){
         let productosObj = await this.getAll();
         productosObj.push(producto);
-        await fs.promises.writeFile(this.file,JSON.stringify(productosObj));
+        await fs.promises.writeFile(this.archivo,JSON.stringify(productosObj));
     }
     async getAll(){
-        let productos = await fs.promises.readFile(this.file);
+        let productos = await fs.promises.readFile(this.archivo);
         let productosObj = JSON.parse(productos);
         return productosObj;
         
@@ -30,10 +30,10 @@ class Contenedor{
         let productos = await this.getAll();
         let nuevaListaProductos = productos.filter((prod)=>prod.id!==id);
         console.log(nuevaListaProductos);
-        await fs.promises.writeFile(this.file,JSON.stringify(nuevaListaProductos));
+        await fs.promises.writeFile(this.archivo,JSON.stringify(nuevaListaProductos));
     }
     async deleteAll(){
-        await fs.promises.writeFile(this.file,'[]');
+        await fs.promises.writeFile(this.archivo,'[]');
     }
 
     async getLength(){
@@ -59,15 +59,15 @@ const getProductoRandom = async (min,max)=>{
 
 
 app.get('/', (req, res) => {
-    res.send(`Root`);
+    res.send(`Raíz`);
 })
 
 app.get('/productos',async (req, res) => {
-    res.send(`La lista de productos es: ${await getProductos().catch("No se ha podido obtener la lista")}`);
+    res.send(`La lista de productos es: ${await getProductos().catch("No se pudo obtener la lista")}`);
 })
 
 app.get('/productoRandom',async (req, res) => {
-    res.send(`El producto es: ${await getProductoRandom(1,await contenedor.getLength()).catch("No se ha podido obtener el producto")}`);
+    res.send(`El Producto al Azar es: ${await getProductoRandom(1,await contenedor.getLength()).catch("No se pudo obtener el producto")}`);
 })
 
 
