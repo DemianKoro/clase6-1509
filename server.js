@@ -51,7 +51,7 @@ const getProductos = async ()=>{
 }
 
 const getProductoRandom = async (min,max)=>{
-    let id = Math.floor(Math.random()*(max-min)+min)
+    let id = Math.floor( Math.random()*( max-min + 1) + min )
     let productoRandom = JSON.stringify(await contenedor.getById(id));
     return productoRandom;
 }
